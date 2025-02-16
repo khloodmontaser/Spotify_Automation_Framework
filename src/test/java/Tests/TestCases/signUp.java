@@ -5,6 +5,7 @@ import Pages.guestPage.mainPage;
 import Pages.signUpPage.SignUpPage;
 import Tests.TestBase;
 import Utilities.JSONReader;
+import Utilities.Utilities;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,7 +27,8 @@ public class signUp extends TestBase {
         // Read test data from JSON file
         JSONObject credentials = JSONReader.getTestData("C:\\Users\\Administrator\\Desktop\\Deliverables\\Spotify_Automation_Framework\\src\\main\\java\\Utilities\\testData\\Credentials.json");
 
-        String email = (String) credentials.get("email");
+        String email = Utilities.generateRandomString(8) + "@gmail.com";
+
         String password = (String) credentials.get("password");
         String name = (String) credentials.get("name");
         String day = (String) credentials.get("day");
