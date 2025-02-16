@@ -4,6 +4,8 @@ import Config.Config;
 import Pages.guestPage.mainPage;
 import Pages.signUpPage.SignUpPage;
 import Tests.TestBase;
+import Utilities.JSONReader;
+import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,22 +23,19 @@ public class signUp extends TestBase {
 
     @Test
     public void signUpOnSpotifyWithValidCredentials() {
-        // Test Data
-        String email = "testuser33632@example.com";
-        String password = "Test@##1234";
-        String name = "Test User";
-        String day = "15";
-        String month = "March";
-        String year = "1998";
-        String gender = "male";
+// Read test data from JSON file
+        JSONObject credentials = JSONReader.getTestData("C:\\Users\\Administrator\\Desktop\\Deliverables\\Spotify_Automation_Framework\\src\\main\\java\\Utilities\\testData\\Credentials.json");
+
+        String email = (String) credentials.get("email");
+        String password = (String) credentials.get("password");
+        String name = (String) credentials.get("name");
+        String day = (String) credentials.get("day");
+        String month = (String) credentials.get("month");
+        String year = (String) credentials.get("year");
+        String gender = (String) credentials.get("gender");
 
         mainPage.clickSignUpButton();
-
-        signUp.enterEmail(email);
-        signUp.clickNext();
-
-        signUp.enterPassword(password);
-        signUp.clickNext();
+        signUp.fillSignUpForm(email, password, name, day, month, year, gender);
 
     }
 }

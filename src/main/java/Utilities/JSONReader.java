@@ -1,23 +1,22 @@
 package Utilities;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class JSONReader {
 
-    // Method to read JSON data from a given file path
-    public static JSONObject readJsonFile(String filePath) throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader fileReader = new FileReader(filePath);
-        return (JSONObject) jsonParser.parse(fileReader);
+    public static JSONObject getTestData(String filePath) {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+            JSONParser parser = new JSONParser();
+            return (JSONObject) parser.parse(content);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to read test data from JSON file", e);
+        }
     }
-
-    // Method to retrieve user login credentials dynamically
 
     }
 

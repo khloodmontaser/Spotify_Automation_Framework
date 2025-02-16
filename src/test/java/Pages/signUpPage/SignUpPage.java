@@ -22,9 +22,11 @@ public class SignUpPage {
     By dayField = By.id("day");
     By monthMenu = By.id("month");
     By yearField = By.id("year");
+
     public By genderRadioButton(String gender) {
         return By.xpath(String.format("//input[@name='gender' and @value='%s']", gender));
     }
+
     By SignUpButton = By.xpath("//span[text() = 'Sign up']");
 
     //Actions

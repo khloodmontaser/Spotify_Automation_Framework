@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class BrowserActions {
     private final WebDriver driver;
-    private final int WAIT_TIME = 38;
+    private final int WAIT_TIME = 30;
 
     public BrowserActions(WebDriver driver) {
         this.driver = driver;
