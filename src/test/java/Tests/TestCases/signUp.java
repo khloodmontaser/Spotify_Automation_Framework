@@ -23,7 +23,7 @@ public class signUp extends TestBase {
 
     @Test
     public void signUpOnSpotifyWithValidCredentials() {
-// Read test data from JSON file
+        // Read test data from JSON file
         JSONObject credentials = JSONReader.getTestData("C:\\Users\\Administrator\\Desktop\\Deliverables\\Spotify_Automation_Framework\\src\\main\\java\\Utilities\\testData\\Credentials.json");
 
         String email = (String) credentials.get("email");
