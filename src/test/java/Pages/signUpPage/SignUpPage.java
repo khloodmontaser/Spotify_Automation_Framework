@@ -16,13 +16,15 @@ public class SignUpPage {
 
     //Locators
     By EmailField = By.id("username");
-    By NextButton = By.xpath("//span[text()='Next']");
+    By NextButton = By.xpath("//button[@data-testid=\"submit\"]\n");
     By PasswordField = By.id("new-password");
     By NameField = By.id("displayName");
     By dayField = By.id("day");
     By monthMenu = By.id("month");
     By yearField = By.id("year");
     By closeCookies = By.xpath("/html/body/div[3]/div[2]/div/div[2]/button");
+
+    By GenderCheck = By.xpath("//*[@id=\"__next\"]/main/main/section/div/form/div[1]/div[2]/div/section/div[3]/fieldset/div/div/div[3]/label/span[1]");
 
     public By genderRadioButton(String gender) {
         return By.xpath(String.format("//input[@name='gender' and @value='%s']", gender));
@@ -77,7 +79,8 @@ public class SignUpPage {
         enterDay(day);
         selectMonth(month);
         enterYear(year);
-        selectGender(gender);
+        browserActions.click(GenderCheck);
+        //selectGender(gender);
         clickNext();
         clickSignUp();
     }
