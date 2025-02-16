@@ -1,6 +1,7 @@
 package Tests.TestCases;
 
 import Config.Config;
+import Pages.HomePage.HomePage;
 import Pages.LoginPage.LogInPage;
 import Pages.guestPage.mainPage;
 import Pages.signUpPage.SignUpPage;
@@ -16,12 +17,14 @@ public class Login extends TestBase {
     Pages.guestPage.mainPage mainPage;
     SignUpPage signUp;
     LogInPage logInPage;
+    HomePage homePage;
 
     @BeforeMethod
     public void setupTest() {
         mainPage = new mainPage(driver);
         signUp = new SignUpPage(driver);
         logInPage = new LogInPage(driver);
+        homePage = new HomePage(driver);
         mainPage.navigateTourl(url);
     }
 
@@ -42,9 +45,15 @@ public class Login extends TestBase {
         signUp.fillSignUpForm(email, password, name, day, month, year, gender);
 
         //logout
+        homePage.logOut();
+
 
         //login with same credentials
+        mainPage.clickLoginButton();
         logInPage.fillLoginData(email, password);
+
+        //assertion
+        homePage.isProfileExist();
 
 
 

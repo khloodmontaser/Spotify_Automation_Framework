@@ -14,7 +14,7 @@ public class mainPage {
     }
 
     //Locators
-    By LoginButton = By.xpath("//span[text()='Log in']");
+    By LoginButton = By.xpath("//*[@id=\"global-nav-bar\"]/div[3]/div[2]/button[2]");
     By SignUpButton = By.xpath("//button[@data-testid=\"signup-button\"]");
 
 
