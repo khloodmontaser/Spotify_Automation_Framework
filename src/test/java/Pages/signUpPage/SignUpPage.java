@@ -22,6 +22,7 @@ public class SignUpPage {
     By dayField = By.id("day");
     By monthMenu = By.id("month");
     By yearField = By.id("year");
+    By closeCookies = By.xpath("/html/body/div[3]/div[2]/div/div[2]/button");
 
     public By genderRadioButton(String gender) {
         return By.xpath(String.format("//input[@name='gender' and @value='%s']", gender));
@@ -64,8 +65,12 @@ public class SignUpPage {
     public void clickSignUp(){browserActions.click(SignUpButton);}
     // Combined method to fill the entire form
     public void fillSignUpForm(String email, String password, String name, String day, String month, String year, String gender) {
+        closeCookiesPopUp();
         enterEmail(email);
+
+
         clickNext();
+
         enterPassword(password);
         clickNext();
         enterName(name);
@@ -75,6 +80,9 @@ public class SignUpPage {
         selectGender(gender);
         clickNext();
         clickSignUp();
+    }
+    public void closeCookiesPopUp(){
+        browserActions.click(closeCookies);
     }
 
 

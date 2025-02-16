@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class BrowserActions {
     private final WebDriver driver;
-    private final int WAIT_TIME = 30;
+    private final int WAIT_TIME = 45;
 
     public BrowserActions(WebDriver driver) {
         this.driver = driver;
@@ -22,9 +22,6 @@ public class BrowserActions {
     public WebElement waitUntilElementIsReady(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-    public WebElement findElement(By locator) {
-        return driver.findElement(locator);
     }
 
 
